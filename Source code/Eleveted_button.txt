@@ -1,0 +1,15 @@
+Center(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: <Widget>[
+            ElevatedButton(
+              onPressed: () {},
+              child: const Text('Enabled'),
+            ),
+            ElevatedButton(
+              onPressed: () {},
+              child: const Text('Enabled'),
+            ),
+          ],
+        ),
+      ),

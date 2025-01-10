@@ -1,0 +1,40 @@
+  body: SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Row(children: [
+              Container(
+                height: 200,
+                width: 200,
+                color: Colors.black,
+              ),
+              const SizedBox(height: 0, width: 10),
+              Container(
+                height: 200,
+                width: 200,
+                color: Colors.black,
+              ),
+              const SizedBox(height: 0, width: 10),
+              Container(
+                height: 200,
+                width: 200,
+                color: Colors.black,
+              ),
+              const SizedBox(height: 0, width: 10),
+              Container(
+                height: 200,
+                width: 200,
+                color: Colors.black,
+              ),
+              const SizedBox(height: 0, width: 10),
+              Container(
+                height: 200,
+                width: 200,
+                color: Colors.black,
+              ),
+              const SizedBox(height: 0, width: 10),
+              Container(
+                height: 200,
+                width: 200,
+                color: Colors.black,
+              ),
+            ]),
+          ),

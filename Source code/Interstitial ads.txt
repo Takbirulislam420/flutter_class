@@ -1,0 +1,52 @@
+const int maxFailedLoadAttempts = 3;  //without class
+
+#################################
+ //create variables
+  InterstitialAd? _interstitialAds;
+  int _interstitialLoadAttempts = 0;
+################################3
+ //create function
+  void createInterstitialAds() {
+    InterstitialAd.load(
+        adUnitId: AdHelper.interstitialAdUnitId,
+        request: AdRequest(),
+        adLoadCallback:
+            InterstitialAdLoadCallback(onAdLoaded: (InterstitialAd ad) {
+          _interstitialAds = ad;
+          _interstitialLoadAttempts = 0;
+        }, onAdFailedToLoad: (LoadAdError error) {
+          _interstitialLoadAttempts += 1;
+          _interstitialAds = null;
+          if (_interstitialLoadAttempts >= maxFailedLoadAttempts) {
+            createInterstitialAds();
+          }
+        }));
+  }
+ //another function
+	
+	  void _showInterstitialAd() {
+    if (_interstitialAds != null) {
+      _interstitialAds!.fullScreenContentCallback = FullScreenContentCallback(
+          onAdDismissedFullScreenContent: (InterstitialAd ad) {
+        ad.dispose();
+        createInterstitialAds();
+      }, onAdFailedToShowFullScreenContent: (InterstitialAd ad, AdError error) {
+        ad.dispose();
+        createInterstitialAds();
+      });
+      _interstitialAds!.show();
+    }
+  }
+#######################
+  @override
+  void initState(){
+	createInterstitialAds();
+	super.initState();
+  }
+
+  @override
+  void dispose() {
+    _bannerAd?.dispose();
+    _interstitialAds?.dispose();
+    super.dispose();
+  }

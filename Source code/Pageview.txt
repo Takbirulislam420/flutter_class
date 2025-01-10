@@ -1,0 +1,45 @@
+import 'package:flutter/material.dart';
+import 'package:web_app/Page1.dart';
+import 'package:web_app/Page2.dart';
+import 'package:web_app/Page3.dart';
+import 'package:web_app/Page4.dart';
+
+void main() {
+  runApp(const MyApp());
+}
+
+class MyApp extends StatefulWidget {
+  const MyApp({super.key});
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  PageController pageController = PageController(
+    initialPage: 0,
+  );
+  @override
+  void dispose() {
+    pageController.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        body: PageView(
+          scrollDirection: Axis.vertical,
+          controller: pageController,
+          children: const [
+            Page1(), //you should create a page like page 1
+            Page2(), //you should create a page like page 2
+            Page3(), //you should create a page like page 3
+            Page4() //you should create a page like page 4
+          ],
+        ),
+      ),
+    );
+  }
+}

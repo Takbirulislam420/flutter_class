@@ -1,0 +1,12 @@
+Center(
+        child: Card(
+            elevation: 10,
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.only(
+                    topRight: Radius.circular(80),
+                    bottomLeft: Radius.circular(80))),
+            child: SizedBox(
+              height: 200,
+              width: 200,
+            )),
+      ),

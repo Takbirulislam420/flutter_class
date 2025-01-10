@@ -1,0 +1,6 @@
+  mySnackBar(context, msg) {
+    return ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+      content: Text(msg),
+    ));
+  }
+  //mySnackBar(context, Myitems[index]['title']); in ontap

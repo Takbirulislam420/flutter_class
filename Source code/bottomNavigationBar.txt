@@ -1,0 +1,77 @@
+import 'package:flutter/material.dart';
+import 'package:web_app/Page1.dart';
+import 'package:web_app/Page2.dart';
+import 'package:web_app/Page3.dart';
+import 'package:web_app/Page4.dart';
+
+void main() {
+  runApp(const MyApp());
+}
+
+class MyApp extends StatefulWidget {
+  const MyApp({super.key});
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  int currentindex = 0;
+  // ignore: non_constant_identifier_names
+
+  final screenlist = [
+    const Page1(),
+    const Page2(),
+    const Page3(),
+    const Page4()
+  ]; //here is you should create page like page1 etc.
+  List<String> screentitle = ['Page1', 'Page2', 'Page3', 'Page4'];
+  //This list is for app bar title
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: Scaffold(
+          appBar: AppBar(
+            title: Text(
+              //"Web App",
+              screentitle[currentindex], //it will be chance our appbar title
+              style: const TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white),
+            ),
+            backgroundColor: Colors.teal,
+            elevation: 15,
+          ),
+          bottomNavigationBar: BottomNavigationBar(
+              backgroundColor: Colors.teal,
+              type: BottomNavigationBarType.fixed,
+              selectedItemColor: Colors.black,
+              selectedIconTheme: const IconThemeData(color: Colors.black),
+              //selectedFontSize: 20,
+              //unselectedFontSize: 15,
+              unselectedIconTheme: const IconThemeData(color: Colors.white),
+              unselectedItemColor: Colors.white,
+              currentIndex: currentindex,
+              onTap: (value) {
+                currentindex = value;
+                setState(() {});
+              },
+              items: const [
+                BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
+                BottomNavigationBarItem(
+                    icon: Icon(Icons.screen_search_desktop), label: "Search"),
+                BottomNavigationBarItem(
+                    icon: Icon(Icons.settings), label: "Setting"),
+                BottomNavigationBarItem(
+                    icon: Icon(Icons.message), label: "Message"),
+              ]),
+          body: IndexedStack(
+            index: currentindex,
+            children: screenlist,
+          )),
+    );
+  }
+}
