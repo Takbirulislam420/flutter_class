@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class MyAppBar extends StatelessWidget {
-  const MyAppBar({super.key});
+class MyFlotingButton extends StatelessWidget {
+  const MyFlotingButton({super.key});
 
   // ignore: non_constant_identifier_names
   MySnackBar(Message, context) {
