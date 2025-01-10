@@ -1,0 +1,20 @@
+home: DefaultTabController(
+        length: 3,
+        child: Scaffold(
+          appBar: AppBar(
+            title: const Text("Takbirul islam"),
+            bottom: const TabBar(tabs: [
+              Tab(
+                icon: Icon(Icons.camera),
+              ),
+              Tab(
+                icon: Icon(Icons.message),
+              ),
+              Tab(
+                icon: Icon(Icons.message),
+              ),
+            ]),
+          ),
+          body: const TabBarView(children: [Page1(), Page2(), Page3()]),
+        ),
+      ),

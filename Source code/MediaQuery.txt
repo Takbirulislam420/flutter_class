@@ -1,0 +1,29 @@
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    var pageHeight = MediaQuery.of(context).size.height;
+    var pageWidth = MediaQuery.of(context).size.width;
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: SafeArea(
+        child: Scaffold(
+          body: Center(
+            child: Container(
+              height: pageHeight / 3,
+              width: pageWidth / 1.5,
+              color: Colors.black,
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}

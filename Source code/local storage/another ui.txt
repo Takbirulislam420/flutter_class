@@ -1,0 +1,129 @@
+import 'package:bangla_status/data/local/ldb_helper.dart';
+import 'package:bangla_status/status/statuslist.dart';
+import 'package:clipboard/clipboard.dart';
+import 'package:flutter/material.dart';
+import 'package:share_plus/share_plus.dart';
+
+class MyStatusItem extends StatefulWidget {
+  const MyStatusItem({super.key});
+
+  @override
+  State<MyStatusItem> createState() => _MyStatusItemState();
+}
+
+class _MyStatusItemState extends State<MyStatusItem> {
+  // MyfavouriteController myfavouriteController =
+  //     Get.put(MyfavouriteController());
+  final BanglaNewsList banglaNewsList = BanglaNewsList();
+  shareText(mysharetext) {
+    Share.share(mysharetext);
+  }
+
+  List<Map<String, dynamic>> allNotes = [];
+  LdbHelper? dbRef;
+  bool check = true;
+
+  @override
+  void initState() {
+    super.initState();
+    dbRef = LdbHelper.getInstance;
+    getnotes();
+  }
+
+  void getnotes() async {
+    allNotes = await dbRef!.getAllNotes();
+    setState(() {});
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: ListView.builder(
+          itemCount: banglaNewsList.NewsList.length,
+          itemBuilder: (_, index) {
+            return Card(
+              elevation: 5,
+              child: Column(
+                children: [
+                  Container(
+                      alignment: Alignment.center,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        color: Colors.green,
+                      ),
+                      height: 200,
+                      width: double.infinity,
+                      child:
+                          Text(banglaNewsList.NewsList[index]["statustext"]!)),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      ElevatedButton(
+                        onPressed: () {
+                          shareText("share");
+                        },
+                        child: const Row(
+                          children: [Icon(Icons.share), Text("Share")],
+                        ),
+                      ),
+                      ElevatedButton(
+                        onPressed: () async {
+                          // saveDelete(
+                          //     mytitle: banglaNewsList.NewsList[index]
+                          //         ["statustext"]!); //another function
+
+                          bool data = await dbRef!.findNote(
+                              mtitle: banglaNewsList.NewsList[index]
+                                  ["statustext"]!);
+                          if (data) {
+                            //delete note
+                            bool deletecheck = await dbRef!.findNote(
+                                mtitle: banglaNewsList.NewsList[index]
+                                    ["statustext"]!);
+                            if (deletecheck) {
+                              getnotes();
+                            }
+                          } else {
+                            //add note
+                            bool addcheck = await dbRef!.addNote(
+                                mTitle: banglaNewsList.NewsList[index]
+                                    ["statustext"]!,
+                                mDes: "this is description");
+                            if (addcheck) {
+                              getnotes();
+                            }
+                          }
+                        },
+                        child: const Row(
+                          children: [
+                            Icon(
+                              Icons.favorite,
+                              color: Colors.red,
+                            ),
+                            Text("love")
+                          ],
+                        ),
+                      ),
+                      ElevatedButton(
+                        onPressed: () {
+                          // ignore: avoid_print
+                          FlutterClipboard.copy("copy");
+                        },
+                        child: const Row(
+                          children: [Icon(Icons.copy), Text("Copy")],
+                        ),
+                      ),
+                    ],
+                  )
+                ],
+              ),
+            );
+          }),
+    );
+  }
+
+  saveDelete({required String mytitle}) async {
+    bool data = await dbRef!.findNote(mtitle: mytitle);
+    return data;
+  }
+}

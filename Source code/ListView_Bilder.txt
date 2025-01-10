@@ -1,0 +1,11 @@
+ListView.builder(
+            itemCount: 8,
+            itemBuilder: (context, index) {
+              return ListTile(
+                  title: const Text("Takbirul islam"),
+                  subtitle: const Text("This is islam"),
+                  leading: Image.network(
+                      'https://img.youtube.com/vi/WPLTvC1Uc4Y/hqdefault.jpg'),
+                  trailing: const Image(
+                      image: AssetImage('assets/images/image1.jpg')));
+            })
