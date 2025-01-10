@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class MyAppBar extends StatelessWidget {
-  const MyAppBar({super.key});
+class MybottomNavigationBar extends StatelessWidget {
+  const MybottomNavigationBar({super.key});
 
   // ignore: non_constant_identifier_names
   MySnackBar(Message, context) {
@@ -46,6 +46,23 @@ class MyAppBar extends StatelessWidget {
             MySnackBar(" i'm floating action button", context);
           },
           child: const Icon(Icons.add)),
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: 1,
+        items: const [
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
+          BottomNavigationBarItem(icon: Icon(Icons.message), label: "Contect"),
+          BottomNavigationBarItem(icon: Icon(Icons.person), label: "Profile")
+        ],
+        onTap: (int index) {
+          if (index == 0) {
+            MySnackBar("Home", context);
+          } else if (index == 1) {
+            MySnackBar("Contect", context);
+          } else if (index == 2) {
+            MySnackBar("Profile", context);
+          }
+        },
+      ),
     );
   }
 }
