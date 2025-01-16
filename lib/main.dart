@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_class/my_drawer.dart';
+import 'package:flutter_class/row_n_container.dart';
 
 void main() {
   runApp(const MyApp());
@@ -23,6 +23,6 @@ class MyApp extends StatelessWidget {
         ),
         color: Colors.blue,
         debugShowCheckedModeBanner: false,
-        home: const MyDrawer());
+        home: const RowAndContainer());
   }
 }
