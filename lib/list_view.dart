@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-// ignore: must_be_immutable
-class MyListView extends StatelessWidget {
-  MyListView({super.key});
+// ignore: must_be_immutable, camel_case_types
+class My_ListView extends StatelessWidget {
+  My_ListView({super.key});
 
   // ignore: non_constant_identifier_names
   var MyItems = [

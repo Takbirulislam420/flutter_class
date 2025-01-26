@@ -30,19 +30,19 @@ class MyButton extends StatelessWidget {
               onPressed: () {
                 MySnackBar("I am Text Button", context);
               },
-              child: Text('Text Button')),
+              child: const Text('Text Button')),
           ElevatedButton(
             onPressed: () {
               MySnackBar("I am Elevated Button", context);
             },
-            child: Text('Elevated Button'),
             style: buttonStyle,
+            child: const Text('Elevated Button'),
           ),
           OutlinedButton(
               onPressed: () {
                 MySnackBar("I am Outline Button", context);
               },
-              child: Text('Outline Button')),
+              child: const Text('Outline Button')),
         ],
       ),
     );
