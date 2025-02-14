@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_class/tap_view.dart';
+import 'package:flutter_class/water_tracker.dart';
 
 void main() {
   runApp(const MyApp());
@@ -23,6 +23,6 @@ class MyApp extends StatelessWidget {
         ),
         color: Colors.blue,
         debugShowCheckedModeBanner: false,
-        home: const MyTapView());
+        home: const WaterTracker());
   }
 }
