@@ -1,12 +1,12 @@
 class ExpanceModel {
   String title;
   double amount;
-  DateTime date;
+  DateTime time;
   String category;
 
   ExpanceModel(
       {required this.title,
       required this.amount,
-      required this.date,
+      required this.time,
       required this.category});
 }
