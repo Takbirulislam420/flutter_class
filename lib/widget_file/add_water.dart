@@ -13,7 +13,7 @@ class AddWater extends StatelessWidget {
     return SizedBox(
       width: double.infinity,
       child: Padding(
-        padding: EdgeInsets.all(8.0),
+        padding: const EdgeInsets.all(8.0),
         child: ElevatedButton.icon(
           style: ElevatedButton.styleFrom(backgroundColor: Colors.amber),
           onPressed: onclick,
