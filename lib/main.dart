@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_class/todo_app.dart';
+import 'package:flutter_class/crud_project/crud_ui/crud_project.dart';
 
 void main() {
   runApp(const MyApp());
@@ -23,6 +23,6 @@ class MyApp extends StatelessWidget {
         ),
         color: Colors.blue,
         debugShowCheckedModeBanner: false,
-        home: const TodoApp());
+        home: const CrudProject());
   }
 }
